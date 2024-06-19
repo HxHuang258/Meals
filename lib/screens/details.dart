@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:meals/models/meal.dart';
-import 'package:transparent_image/transparent_image.dart';
 
 class MealDetailsScreen extends StatelessWidget {
   const MealDetailsScreen({super.key, required this.meal, required this.onToggleFavourite});
@@ -15,7 +14,7 @@ class MealDetailsScreen extends StatelessWidget {
           title: Text(meal.title),
           actions: [
             IconButton(
-              onPressed: () {onToggleFavourite;}, 
+              onPressed: () {onToggleFavourite(meal);}, 
               icon: const Icon(Icons.star),)
           ],
         ),
