@@ -15,6 +15,10 @@ class FiltersNotifier extends StateNotifier<Map<Filter, bool>> {
     Filter.vegan: false //initially set all filters to falses
   });
 
+  void setFilters(Map<Filter, bool> chosenFilters) {
+    state = chosenFilters;
+  }
+
   void setFilter(Filter filter, bool isActive) {
     state = {
       ...state,
