@@ -5,13 +5,15 @@ class FavouriteMealsNotifier extends StateNotifier<List<Meal>> {
   FavouriteMealsNotifier() : super([]); //set initial data
   //add any methods that modify above data
   //not allowed to mutate variables in memory, have to do so in an immutable way
-  void toggleMealFavouriteStatus(Meal meal) {
+  bool toggleMealFavouriteStatus(Meal meal) {
     bool mealIsFavourite = state.contains(meal);
 
     if (mealIsFavourite) {
       state = state.where((m) => m.id != meal.id).toList();
+      return false;
     } else {
       state = [...state, meal];
+      return true;
     }
   }
 }
