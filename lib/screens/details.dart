@@ -29,8 +29,16 @@ class MealDetailsScreen extends ConsumerWidget {
                       : 'Meal removed'),
                 )); 
               },
-              icon: Icon(isFavourited ? Icons.star : Icons.star_border),
-            )
+              icon: AnimatedSwitcher(
+                duration: const Duration(milliseconds: 300),
+                transitionBuilder: (child, animation) {
+                  return RotationTransition(
+                    turns: Tween(begin: 0.5, end: 1.0).animate(animation), //since Tween is a generic type, can specify a type like Tween<double>
+                    child: child);
+                },
+                child: Icon(isFavourited ? Icons.star : Icons.star_border, key: ValueKey(isFavourited)),
+              ), 
+            ),
           ],
         ),
         body: SingleChildScrollView(
